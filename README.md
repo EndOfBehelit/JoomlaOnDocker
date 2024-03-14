@@ -91,7 +91,7 @@ Importante cambiar el "7f9b" por las siglas de cada contenedor
         ```
           apt install nano
         ```
-        ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/6f408b6b-681f-49e1-af3e-cf279c193b6c)
+      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/6f408b6b-681f-49e1-af3e-cf279c193b6c)
 
     * Systemctl
         ```
@@ -114,7 +114,7 @@ Importante cambiar el "7f9b" por las siglas de cada contenedor
         chmod 755 -R joomlaguia
       ```
 
-![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a9589b33-4b05-45be-8cb8-177774770265)
+        ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a9589b33-4b05-45be-8cb8-177774770265)
 
   * Configuración apache2 <br>
     Vamos al directorio `/etc/apache2/sites-availables`
@@ -126,4 +126,35 @@ Importante cambiar el "7f9b" por las siglas de cada contenedor
     ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/9066cb89-081a-4c79-9ef1-4bfd2b9d4912)
 
     * Editar `joomlaguia.conf` <br>
-    
+      ```
+        nano -c /etc/apache2/sites-available/joomla.conf
+      ```
+      Debe quedar algo así
+      ```  
+        <VirtualHost *:80>                
+                <Directory /var/www/html/joomlaguia/>
+                        Options FollowSymlinks
+                        AllowOverride All
+                        Require all granted
+                </Directory>
+                ErrorLog ${APACHE_LOG_DIR}/joomla_error.log
+                CustomLog ${APACHE_LOG_DIR}/joomla_access.log combined
+        </VirtualHost>
+      ```
+      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/09fd227b-0049-4949-af99-e6e713885579)
+  
+  * Habilitar sitio y reiniciar el servicio de apache2
+      ```
+        a2ensite /etc/apache2/sites-available/joomla.conf
+      ```
+      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/b7a19143-73e9-4e6e-945f-4e38ec395e66)
+
+      ```
+        systemctl restart apache2
+      ```
+      ```
+        systemctl status apache2
+      ```
+      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/4e93d33c-9f4d-4917-8f9a-70d141fa7fc4)
+
+      
