@@ -117,13 +117,14 @@ Importante cambiar el "7f9b" por las siglas de cada contenedor
         ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a9589b33-4b05-45be-8cb8-177774770265)
 
   * Configuración apache2 <br>
+
     Vamos al directorio `/etc/apache2/sites-availables`
     
     * Copiar el archivo default para hacer uno personalizado para Joomla <br>
       ```
         cp 00-default.conf joomlaguia.conf
       ```
-    ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/9066cb89-081a-4c79-9ef1-4bfd2b9d4912)
+      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/9066cb89-081a-4c79-9ef1-4bfd2b9d4912)
 
     * Editar `joomlaguia.conf` <br>
       ```
