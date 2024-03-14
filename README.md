@@ -40,10 +40,6 @@ También debemos crear un usuario con todos los permisos para esa base de datos,
 
 ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/1767ac97-5b6f-4d74-adb9-3c396701262c)
 
-
-```
-
-```
 ## Crear contenedor docker de joomla
 Comprobamos los contenedores que tenemos activos con:
 ```
@@ -62,3 +58,13 @@ Volvemos a comprobar que se ha creado correctamente y está activo.
 ```
 docker ps
 ```
+
+## POSIBLES ERRORES
+
+En caso de error, el comando devolverá un id igualmente, pero si hacemos "docker ps" no saldrá nada.
+![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/628c0e45-4944-433f-9354-bf4fe174cac3)
+
+Debemos usar "docker ps -a" que nos permite ver los contenedores pausados. Si usamos el comando "docker logs NombreContenedor" nos permite ver el posible error.
+![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a1680e96-0378-4e3b-83ca-cf286d7a3d78)
+
+Puede darse el caso también de que el contenedor se esté ejecutando y de un error al hacer el exec, esto es porque la máquina arranca, pero no del todo, con el mismo comando de antes podemos ver posibles errores o si ha arrancado correctamente.
