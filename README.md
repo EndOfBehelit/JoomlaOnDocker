@@ -159,3 +159,16 @@ Importante cambiar el "7f9b" por las siglas de cada contenedor
       ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/4e93d33c-9f4d-4917-8f9a-70d141fa7fc4)
 
       
+## Configuración del servidor DNS
+
+  Para esta guía al igual que con la base de datos, se usa un servidor DNS ya creado (en este caso un Windows Server)
+
+  * Creación de una nueva zona `joomlaguia.com`
+    ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/85f58c59-6485-41ba-974f-c3016d0eb4d8)
+
+  * Nuevo host A e inversa `www.`
+  ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/40d7b913-6770-4afb-b6cb-03045be07045)
+
+Con esto creamos el nombre DNS `www.joomlaguia.com`
+![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a2176f3b-76ea-484e-aa83-223a66e8c236)
+
