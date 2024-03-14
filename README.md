@@ -1,7 +1,7 @@
 # JoomlaOnDocker
 Creación de contenedor Docker con Joomla e instalación de este
 
-##Arranque de máquina docker
+## Arranque de máquina docker
 Iniciamos sesión, pasamos a modo superusuario.
 ```
 sudo su
@@ -9,12 +9,14 @@ sudo su
 Comprobamos que imágenes tenemos y la versión de nuestro Docker
 ```
 docker images
+```
+```
 docker --version 
 ```
 ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/b046c829-4fce-4086-a9a7-6d2a4797c6a1)
 
 
-##Descarga de Joomla
+## Descarga de Joomla
 Buscamos cual es el comando para la descarga de la imagen de Joomla y la descargamos 
 
 ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/3a911a74-ea4b-4c4b-b87d-946199993f48)
@@ -29,7 +31,7 @@ docker images
 
 ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/601c51d4-a3a9-4fc2-9586-cafcb34ab590)
 
-##Creación de base de datos
+## Creación de base de datos
 Creamos una base de datos, por ejemplo "JoomlaGuia", en este caso he utilizado la interfaz gráfica de Workbech sobre un servidor ya existente.
 
 ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/839f9419-34ae-4bf6-a39a-91ef11ed4966)
@@ -42,7 +44,7 @@ También debemos crear un usuario con todos los permisos para esa base de datos,
 ```
 
 ```
-##Crear contenedor docker de joomla
+## Crear contenedor docker de joomla
 Comprobamos los contenedores que tenemos activos con:
 ```
 docker ps
