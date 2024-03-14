@@ -66,7 +66,64 @@ En caso de error, el comando devolverá un id igualmente, pero si hacemos "docke
 ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/628c0e45-4944-433f-9354-bf4fe174cac3)
 
 Debemos usar "docker ps -a" que nos permite ver los contenedores pausados. Si usamos el comando "docker logs NombreContenedor" nos permite ver el posible error.
+```
+docker logs ContenedorJoomla
+```
 
 ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a1680e96-0378-4e3b-83ca-cf286d7a3d78)
 
 Puede darse el caso también de que el contenedor se esté ejecutando y de un error al hacer el exec, esto es porque la máquina arranca, pero no del todo, con el mismo comando de antes podemos ver posibles errores o si ha arrancado correctamente.
+
+## Acceso al contenedor
+
+```
+docker exec -it 7f9b bash
+```
+Importante cambiar el "7f9b" por las siglas de cada contenedor
+
+![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/b6931d83-b766-404c-9bf3-06bf646ed991)
+
+## Configuración del contenedor Joomla
+  
+  * Instalación de nano y systemctl
+    Como estamos en docker las imágenes vienen con los recursos mínimos, necesitamos estos dos servicios
+    * Nano
+        ```
+          apt install nano
+        ```
+        ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/6f408b6b-681f-49e1-af3e-cf279c193b6c)
+
+    * Systemctl
+        ```
+          apt install systecmtl
+        ```
+        ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/2850a61e-fd64-4727-ac29-7ef6dbc04281)
+
+  * Virtual host, carpeta y permisos <br>
+
+    * Crear una carpeta para Joomla en `/var/www/html`<br>
+        ```
+        mkdir joomlaguia
+        ```
+    * Cambiar propietario  <br>
+      ```
+       chown www-data:www-data -R jooomlaguia
+      ```
+    * Forwarding <br>
+      ```
+        chmod 755 -R joomlaguia
+      ```
+
+![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a9589b33-4b05-45be-8cb8-177774770265)
+
+  * Configuración apache2 <br>
+    Vamos al directorio `/etc/apache2/sites-availables`
+    
+    * Copiar el archivo default para hacer uno personalizado para Joomla <br>
+      ```
+        cp 00-default.conf joomlaguia.conf
+      ```
+    ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/9066cb89-081a-4c79-9ef1-4bfd2b9d4912)
+
+    * Editar `joomlaguia.conf` <br>
+    
