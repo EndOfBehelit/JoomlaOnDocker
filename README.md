@@ -85,7 +85,7 @@ Importante cambiar el "7f9b" por las siglas de cada contenedor
 
 ## **Configuración del contenedor Joomla**
   
-  * Instalación de nano y systemctl
+  * **Instalación de nano y systemctl** <br>
     Como estamos en docker las imágenes vienen con los recursos mínimos, necesitamos estos dos servicios
     * **Nano**
         ```
