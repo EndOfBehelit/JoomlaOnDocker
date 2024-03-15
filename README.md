@@ -122,7 +122,7 @@ Importante cambiar el "7f9b" por las siglas de cada contenedor
     
     * **Copiar el archivo default para hacer uno personalizado para Joomla** <br>
       ```
-        cp 00-default.conf joomlaguia.conf
+        cp 000-default.conf joomlaguia.conf
       ```
       ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/9066cb89-081a-4c79-9ef1-4bfd2b9d4912)
 
