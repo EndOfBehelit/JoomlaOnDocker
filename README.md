@@ -163,10 +163,10 @@ Importante cambiar el "7f9b" por las siglas de cada contenedor
 
   Para esta guía al igual que con la base de datos, se usa un servidor DNS ya creado (en este caso un Windows Server)
 
-  * **Creación de una nueva zona `joomlaguia.com` **<br>
+  * **Creación de una nueva zona `joomlaguia.com`**<br>
     ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/85f58c59-6485-41ba-974f-c3016d0eb4d8)
 
-  * **Nuevo host A e inversa `www.` **<br>
+  * **Nuevo host A e inversa `www.`**<br>
   ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/40d7b913-6770-4afb-b6cb-03045be07045)
 
 Con esto creamos el nombre DNS `www.joomlaguia.com`<br>
