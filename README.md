@@ -109,7 +109,7 @@ Importante cambiar el "7f9b" por las siglas de cada contenedor
       ```
        chown www-data:www-data -R jooomlaguia
       ```
-    * **Forwarding** <br>
+    * **Cambiar permisos** <br>
       ```
         chmod 755 -R joomlaguia
       ```
