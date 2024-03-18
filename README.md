@@ -248,7 +248,7 @@ El uso de una URL y a la vez un puerto puede ser confusa y a veces olvidarse, pa
 <br>
 
   * **Creación de tablas de redirección**<br>
-    Con esto redireccionamos todos los paquetes que lleguen al puerto `80` hacia nuestro puerto `8182`, esta solución sirve si sólo estamos usando un contenedor que necesite del uso del puerto `80`, sino habría que configurar en la cración del contenedor diferentes puertos.<br>
+    Con esto redireccionamos todos los paquetes que lleguen al puerto `80` hacia nuestro puerto `8182`, esta solución sirve si sólo estamos usando un contenedor que necesite del uso del puerto `80`, sino habría que configurar en la cración del contenedor diferentes puertos.<br><br>
     ```
       iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8182
     ```
