@@ -255,12 +255,14 @@ El uso de una URL y a la vez un puerto puede ser confusa y a veces olvidarse, pa
   ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/310423f1-dea2-47df-b30b-d71dd6f5fbfb)
 
 <br>
+
 ```
   docker commit 0 joomlaguia_completa_imagen
 ```
 ```
   docker images
 ```
+
 ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/4704c3a2-60f3-451b-b579-1e0cc7d9e616)
 
 
