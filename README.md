@@ -32,11 +32,11 @@ docker images
 ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/601c51d4-a3a9-4fc2-9586-cafcb34ab590)
 
 ## **Creación de base de datos**
-Creamos una base de datos, por ejemplo "JoomlaGuia", en este caso he utilizado la interfaz gráfica de Workbech sobre un servidor ya existente.
+Creamos una base de datos, por ejemplo `JoomlaGuia`, en este caso he utilizado la interfaz gráfica de Workbech sobre un servidor ya existente.
 
 ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/839f9419-34ae-4bf6-a39a-91ef11ed4966)
 
-También debemos crear un usuario con todos los permisos para esa base de datos, por ejemplo "joomlaguia".
+También debemos crear un usuario con todos los permisos para esa base de datos, por ejemplo `joomlaguia`.
 
 ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/1767ac97-5b6f-4d74-adb9-3c396701262c)
 
@@ -61,18 +61,18 @@ docker ps
 
 ## **POSIBLES ERRORES**
 
-En caso de error, el comando devolverá un id igualmente, pero si hacemos "docker ps" no saldrá nada.
+En caso de error, el comando devolverá un id igualmente, pero si hacemos `docker ps` no saldrá nada.
 
 ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/628c0e45-4944-433f-9354-bf4fe174cac3)
 
-Debemos usar "docker ps -a" que nos permite ver los contenedores pausados. Si usamos el comando "docker logs NombreContenedor" nos permite ver el posible error.
+Debemos usar `docker ps -a` que nos permite ver los contenedores pausados. Si usamos el comando `docker logs NombreContenedor` nos permite ver el posible error.
 ```
 docker logs ContenedorJoomla
 ```
 
 ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a1680e96-0378-4e3b-83ca-cf286d7a3d78)
 
-Puede darse el caso también de que el contenedor se esté ejecutando y de un error al hacer el exec, esto es porque la máquina arranca, pero no del todo, con el mismo comando de antes podemos ver posibles errores o si ha arrancado correctamente.
+Puede darse el caso también de que el contenedor se esté ejecutando y de un error al hacer el `exec`, esto es porque la máquina arranca, pero no del todo, con el mismo comando de antes podemos ver posibles errores o si ha arrancado correctamente.
 
 ## **Acceso al contenedor**
 
@@ -87,7 +87,7 @@ Importante cambiar el "0" por las siglas de cada contenedor, si no hay ningún o
 ## **Configuración del contenedor Joomla**
   
   * **Instalación de nano, systemctl, unzip, y wget** <br>
-    Como estamos en docker las imágenes vienen con los recursos mínimos, necesitamos estos dos servicios
+    Como estamos en docker las imágenes vienen con los recursos mínimos, necesitamos estos servicios:
     * **Nano**
         ```
           apt-get install nano
@@ -145,7 +145,7 @@ Importante cambiar el "0" por las siglas de cada contenedor, si no hay ningún o
 
     * **Editar `joomlaguia.conf`** <br>
       ```
-        nano -c /etc/apache2/sites-available/joomla.conf
+        nano -c joomlaguia.conf
       ```
       Debe quedar algo así
       ```  
@@ -197,11 +197,13 @@ Importante cambiar el "0" por las siglas de cada contenedor, si no hay ningún o
   * **Creación de una nueva zona `joomlaguia.com`**<br>
     ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/85f58c59-6485-41ba-974f-c3016d0eb4d8)
 
-  * **Nuevo host A e inversa `www.`**<br>
+  * **Nuevo host A e inversa `www`**<br>
   ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/40d7b913-6770-4afb-b6cb-03045be07045)
-
+<br>
+  ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a2176f3b-76ea-484e-aa83-223a66e8c236)
+<br>
 Con esto creamos el nombre DNS `www.joomlaguia.com`<br><br>
-      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a2176f3b-76ea-484e-aa83-223a66e8c236)
+      
 
 ## **Instalación de Joomla**<br>
 
@@ -228,15 +230,15 @@ El uso de una URL y a la vez un puerto puede ser confusa y a veces olvidarse, pa
       apt install iptables
     ```
     ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/e9eb4ceb-16b5-4c14-a8d9-b6a0c2248a23)
-
-  * **Creación de tablas de redirección**
-    Con esto redireccionamos todos los paquetes que lleguen al puerto 80 hacia nuestro puerto 8182, esta solución sirve si sólo estamos usando un contenedor que necesite del uso del puerto 80, sino habría que configurar en la cración del contenedor diferentes puertos.<br>
+<br>
+  * **Creación de tablas de redirección** <br>
+    Con esto redireccionamos todos los paquetes que lleguen al puerto `80` hacia nuestro puerto `8182`, esta solución sirve si sólo estamos usando un contenedor que necesite del uso del puerto `80`, sino habría que configurar en la cración del contenedor diferentes puertos.<br>
     ```
       iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8182
     ```
-## **Creación de imagen docker**
+## **Creación de imagen docker** <br>
   Una vez finalizado el proceso de instalación de Joomla!, debemos crear una imagen de la máquina para evitar la pérdida de datos, ya que docker pierde la información de las máquinas al apagarse.<br>
-  Debemos salir del contenedor con la secuencia `Ctrl + p + Ctrl + q`. (También puede usarse exit, pero este comando puede apagar la máquina)<br>
+  Debemos salir del contenedor con la secuencia `Ctrl + p + Ctrl + q`. (También puede usarse exit, pero este comando puede apagar la máquina)<br><br>
   ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/310423f1-dea2-47df-b30b-d71dd6f5fbfb)
 <br>
 ```
