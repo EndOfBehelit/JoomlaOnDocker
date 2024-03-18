@@ -256,6 +256,7 @@ El uso de una URL y a la vez un puerto puede ser confusa y a veces olvidarse, pa
       iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8182
     ```
 ## **Creación de imagen docker** <br>
+
   Una vez finalizado el proceso de instalación de Joomla!, debemos crear una imagen de la máquina para evitar la pérdida de datos, ya que docker pierde la información de las máquinas al apagarse.<br>
   Debemos salir del contenedor con la secuencia `Ctrl + p + Ctrl + q`. (También puede usarse exit, pero este comando puede apagar la máquina)<br><br>
   
