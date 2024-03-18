@@ -217,7 +217,7 @@ Importante cambiar el "0" por las siglas de cada contenedor, si no hay ningún o
 <br>
   Con esto creamos el nombre DNS www.joomlaguia.com
 <br><br>
-      
+  
 
 ## **Instalación de Joomla**<br>
 
@@ -252,6 +252,8 @@ El uso de una URL y a la vez un puerto puede ser confusa y a veces olvidarse, pa
     ```
       iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8182
     ```
+<br><br>
+A partir de ahora podemos buscar en la URL como `www.joomlaguia.com`.
     
 ## **Imagen docker**<br>
   Una vez finalizado el proceso de instalación de Joomla!, debemos crear una imagen de la máquina para evitar la pérdida de datos, ya que docker pierde la información de las máquinas al apagarse.<br>
