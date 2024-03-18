@@ -221,8 +221,30 @@ Continuamos completando los pasos de la instalación, como vemos en las imágene
 <br>
     ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/b0832b86-466c-482a-842c-c1c2c6ad4438)
 
+## **Solución al uso del puerto**<br>
+El uso de una URL y a la vez un puerto puede ser confusa y a veces olvidarse, para evitar esto podemos solucionarlo configurando en nuestra máquina docker (no en el contenedor) una redirección de puertos: <br>
+  * **Instalar iptables**
+    ```
+      apt install iptables
+    ```
+    ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/e9eb4ceb-16b5-4c14-a8d9-b6a0c2248a23)
 
-
-
+  * **Creación de tablas de redirección**
+    Con esto redireccionamos todos los paquetes que lleguen al puerto 80 hacia nuestro puerto 8182, esta solución sirve si sólo estamos usando un contenedor que necesite del uso del puerto 80, sino habría que configurar en la cración del contenedor diferentes puertos.<br>
+    ```
+      iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8182
+    ```
+## **Creación de imagen docker**
+  Una vez finalizado el proceso de instalación de Joomla!, debemos crear una imagen de la máquina para evitar la pérdida de datos, ya que docker pierde la información de las máquinas al apagarse.<br>
+  Debemos salir del contenedor con la secuencia `Ctrl + p + Ctrl + q`. (También puede usarse exit, pero este comando puede apagar la máquina)<br>
+  ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/310423f1-dea2-47df-b30b-d71dd6f5fbfb)
+<br>
+```
+  docker commit 0 joomlaguia_completa_imagen
+```
+```
+  docker images
+```
+![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/4704c3a2-60f3-451b-b579-1e0cc7d9e616)
 
 
