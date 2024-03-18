@@ -240,8 +240,10 @@ El uso de una URL y a la vez un puerto puede ser confusa y a veces olvidarse, pa
       apt install iptables
     ```
     ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/e9eb4ceb-16b5-4c14-a8d9-b6a0c2248a23)
+    
 <br>
-  * **Creación de tablas de redirección** <br>
+
+  * **Creación de tablas de redirección**<br>
     Con esto redireccionamos todos los paquetes que lleguen al puerto `80` hacia nuestro puerto `8182`, esta solución sirve si sólo estamos usando un contenedor que necesite del uso del puerto `80`, sino habría que configurar en la cración del contenedor diferentes puertos.<br>
     ```
       iptables -t nat -A PREROUTING -p tcp --dport 80 -j REDIRECT --to-port 8182
