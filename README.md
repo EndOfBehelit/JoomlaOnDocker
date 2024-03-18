@@ -2,7 +2,14 @@
 Creación de contenedor Docker con Joomla y configuración del sitio.
 - [JoomlaOnDocker](#joomlaondocker)
   - [Arranque de máquina docker](#arranque-de-máquina-docker)
-
+  - [Descarga de Joomla](#descarga-de-joomla)
+  - [Crear contenedor docker de joomla](#crear-contenedor-docker-de-joomla)
+    - [POSIBLES ERRORES](#posibles-errores)
+  - [Acceso al contenedor](#acceso-al-contenedor)
+  - [Configuración del contenedor Joomla](#configuración-del-contenedor-joomla)
+  - [Configuración del servidor DNS](#configuración-del-servidor-dns)
+  - [Instalación de Joomla](#instalación-de-joomla)
+    - [Solución al uso del puerto](#solución-al-uso-del-puerto)
   - [Creación de imagen docker](#creación-de-imagen-docker)
 
 
@@ -67,7 +74,7 @@ Volvemos a comprobar que se ha creado correctamente y está activo.
 docker ps
 ```
 
-## **POSIBLES ERRORES**
+### **POSIBLES ERRORES**
 
 En caso de error, el comando devolverá un id igualmente, pero si hacemos `docker ps` no saldrá nada.
 
@@ -233,7 +240,7 @@ Continuamos completando los pasos de la instalación, como vemos en las imágene
 <br>
     ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/b0832b86-466c-482a-842c-c1c2c6ad4438)
 
-## **Solución al uso del puerto**<br>
+### **Solución al uso del puerto**<br>
 El uso de una URL y a la vez un puerto puede ser confusa y a veces olvidarse, para evitar esto podemos solucionarlo configurando en nuestra máquina docker (no en el contenedor) una redirección de puertos: <br>
   * **Instalar iptables**
     ```
