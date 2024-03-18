@@ -215,7 +215,8 @@ Importante cambiar el "0" por las siglas de cada contenedor, si no hay ningún o
   ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a7f85c55-e712-4cbd-a4b8-f8f05eec5bef)
 
 <br>
-Con esto creamos el nombre DNS `www.joomlaguia.com`<br><br>
+  Con esto creamos el nombre DNS www.joomlaguia.com
+<br><br>
       
 
 ## **Instalación de Joomla**<br>
