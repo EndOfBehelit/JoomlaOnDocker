@@ -77,44 +77,61 @@ Puede darse el caso también de que el contenedor se esté ejecutando y de un er
 ## **Acceso al contenedor**
 
 ```
-docker exec -it 7f9b bash
+docker exec -it 0 bash
 ```
-Importante cambiar el "7f9b" por las siglas de cada contenedor
+Importante cambiar el "0" por las siglas de cada contenedor, si no hay ningún otro que empiece por 0 con un caracter es suficiente.
 
-![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/b6931d83-b766-404c-9bf3-06bf646ed991)
+![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/f16e761f-1873-405f-8780-c6f6db880224)
+
 
 ## **Configuración del contenedor Joomla**
   
-  * **Instalación de nano y systemctl** <br>
+  * **Instalación de nano, systemctl, unzip, y wget** <br>
     Como estamos en docker las imágenes vienen con los recursos mínimos, necesitamos estos dos servicios
     * **Nano**
         ```
-          apt install nano
+          apt-get install nano
         ```
-      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/6f408b6b-681f-49e1-af3e-cf279c193b6c)
+      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/42c9401a-f24b-4142-8a0f-273fe61d8ea5)
+
 
     * **Systemctl**
         ```
-          apt install systecmtl
+          apt-get install systecmtl
         ```
-        ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/2850a61e-fd64-4727-ac29-7ef6dbc04281)
+        ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/65d0fafb-2167-4203-ade6-bde7bc48caab)
 
-  * **Virtual host, carpeta y permisos** <br>
-
-    * **Crear una carpeta para Joomla en `/var/www/html`**<br>
+    * **Unzip**
         ```
-        mkdir joomlaguia
+          apt-get install unzip
         ```
-    * **Cambiar propietario**  <br>
-      ```
-       chown www-data:www-data -R jooomlaguia
-      ```
-    * **Cambiar permisos** <br>
-      ```
-        chmod 755 -R joomlaguia
-      ```
+        ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/f00b1aab-4cef-4c8e-9f44-8eca511fb6b5)
 
-        ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a9589b33-4b05-45be-8cb8-177774770265)
+      * **Wget**
+        ```
+          apt-get install wget
+        ```
+        ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/6fc0302d-da3b-4756-99bb-14c56fbb79a8)
+
+
+  * **Virtual host y descarga de joomla** <br>
+
+    * **Descargar joomla, descomprimir y moverlo a `/var/www/html/joomlaguia`**<br>
+        ```
+          wget https://downloads.joomla.org/cms/joomla4/4-1-2/Joomla_4-1-2-Stable-Full_Package.zip
+        ```
+        ```
+          unzip Joomla_4-1-2-Stable-Full_Package.zip -d /var/www/html/joomlagioa
+        ```
+    * **Cambiar propietario y permisos**  <br>
+      ```
+       chown www-data:www-data -R /var/www/html/jooomlaguia
+      ```
+      ```
+        chmod 755 -R /var/www/html/joomlaguia
+      ```
+        ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/c445d806-29e7-42ef-aa19-35d6864e44a5)
+
 
   * **Configuración apache2** <br>
 
