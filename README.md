@@ -200,7 +200,9 @@ Importante cambiar el "0" por las siglas de cada contenedor, si no hay ningún o
   * **Nuevo host A e inversa `www`**<br>
   ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/40d7b913-6770-4afb-b6cb-03045be07045)
 <br>
-  ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a2176f3b-76ea-484e-aa83-223a66e8c236)
+
+  ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a7f85c55-e712-4cbd-a4b8-f8f05eec5bef)
+
 <br>
 Con esto creamos el nombre DNS `www.joomlaguia.com`<br><br>
       
