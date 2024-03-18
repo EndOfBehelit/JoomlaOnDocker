@@ -107,14 +107,14 @@ Importante cambiar el "0" por las siglas de cada contenedor, si no hay ningún o
         ```
         ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/f00b1aab-4cef-4c8e-9f44-8eca511fb6b5)
 
-      * **Wget**
+    * **Wget**
         ```
           apt-get install wget
         ```
         ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/6fc0302d-da3b-4756-99bb-14c56fbb79a8)
 
 
-  * **Virtual host y descarga de joomla** <br>
+  * **Descarga de joomla** <br>
 
     * **Descargar joomla, descomprimir y moverlo a `/var/www/html/joomlaguia`**<br>
         ```
@@ -141,7 +141,7 @@ Importante cambiar el "0" por las siglas de cada contenedor, si no hay ningún o
       ```
         cp 000-default.conf joomlaguia.conf
       ```
-      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/9066cb89-081a-4c79-9ef1-4bfd2b9d4912)
+      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/572447a0-1495-4a99-9ae7-92a9ac7524f4)
 
     * **Editar `joomlaguia.conf`** <br>
       ```
@@ -150,22 +150,35 @@ Importante cambiar el "0" por las siglas de cada contenedor, si no hay ningún o
       Debe quedar algo así
       ```  
         <VirtualHost *:80>                
-                <Directory /var/www/html/joomlaguia/>
-                        Options FollowSymlinks
-                        AllowOverride All
-                        Require all granted
-                </Directory>
+                ServerName joomlaguia.com
+                ServerAlias www.joomlaguia.com
+                ServerAdmin admin@joomla.com
+                DocumentRoot /var/www/html/joomlaguia/
+      
                 ErrorLog ${APACHE_LOG_DIR}/joomla_error.log
                 CustomLog ${APACHE_LOG_DIR}/joomla_access.log combined
+
+                <Directory /var/www/html/joomlaguia/>
+                            Options Indexes FollowSymLinks
+                            AllowOverride All
+                            Require all granted
+                            RewriteEngine on
+                            RewriteBase /
+                            RewriteCond %{REQUEST_FILENAME} !-f
+                            RewriteCond %{REQUEST_FILENAME} !-d
+                            RewriteRule ^(.*)$ index.php?q=$1 [L,QSA]
+                 </Directory>
         </VirtualHost>
       ```
-      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/09fd227b-0049-4949-af99-e6e713885579)
+      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/f5f74189-818a-4680-8494-7713880d36d8)
+
+
   
   * **Habilitar sitio y reiniciar el servicio de apache2**<br>
       ```
-        a2ensite /etc/apache2/sites-available/joomla.conf
+        a2ensite joomlaguia.conf
       ```
-      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/b7a19143-73e9-4e6e-945f-4e38ec395e66)
+      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/0a3e49c7-e042-4367-8fb1-5bffff6d86c4)
 
       ```
         systemctl restart apache2
@@ -173,7 +186,8 @@ Importante cambiar el "0" por las siglas de cada contenedor, si no hay ningún o
       ```
         systemctl status apache2
       ```
-      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/4e93d33c-9f4d-4917-8f9a-70d141fa7fc4)
+      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/7b5ac936-9b07-49b3-9000-b39ff652711b)
+
 
       
 ## **Configuración del servidor DNS**
@@ -186,6 +200,29 @@ Importante cambiar el "0" por las siglas de cada contenedor, si no hay ningún o
   * **Nuevo host A e inversa `www.`**<br>
   ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/40d7b913-6770-4afb-b6cb-03045be07045)
 
-Con esto creamos el nombre DNS `www.joomlaguia.com`<br>
-![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a2176f3b-76ea-484e-aa83-223a66e8c236)
+Con esto creamos el nombre DNS `www.joomlaguia.com`<br><br>
+      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/a2176f3b-76ea-484e-aa83-223a66e8c236)
+
+## **Instalación de Joomla**<br>
+
+  Accedemos a la web mediante nuestro cliente (en este caso al igual que con el DNS y la BBDD, tenemos un cliente desde el que acceder ya creado), buscamos en la URL el nombre que le pusimos en el DNS: `www.joomlaguia.com:8182` <br>
+      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/15ada2d2-ee60-4461-8c58-e44cd7464ffc)
+<br>
+Continuamos completando los pasos de la instalación, como vemos en las imágenes, aquí los datos son independientes para cada persona:<br>
+      ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/4e2599cb-165b-47c5-864d-da91975bd76c)
+<br>
+        ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/598c0cef-e161-4f19-8ea6-d73e8b50baa9)
+<br>
+        ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/c7a99bd5-63f1-4616-b7e5-82cccfb8a338)
+<br>
+    ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/7147a34f-8678-473b-9ad8-13c3ac4f110d)
+<br>
+    ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/d3c2ecc3-f6c1-406b-97b4-1a11cf52567e)
+<br>
+    ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/b0832b86-466c-482a-842c-c1c2c6ad4438)
+
+
+
+
+
 
