@@ -1,6 +1,14 @@
 # **JoomlaOnDocker**
 Creación de contenedor Docker con Joomla e instalación de este
 
+- [Arranque de máquina docker](#arranque-de-máquina-docker)
+
+- [Creación de imagen docker](#creación-de-imagen-docker)
+
+
+
+
+
 ## **Arranque de máquina docker**
 Iniciamos sesión, pasamos a modo superusuario.
 ```
