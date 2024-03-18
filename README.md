@@ -249,7 +249,9 @@ El uso de una URL y a la vez un puerto puede ser confusa y a veces olvidarse, pa
 ## **Creación de imagen docker** <br>
   Una vez finalizado el proceso de instalación de Joomla!, debemos crear una imagen de la máquina para evitar la pérdida de datos, ya que docker pierde la información de las máquinas al apagarse.<br>
   Debemos salir del contenedor con la secuencia `Ctrl + p + Ctrl + q`. (También puede usarse exit, pero este comando puede apagar la máquina)<br><br>
+  
   ![imagen](https://github.com/EndOfBehelit/JoomlaOnDocker/assets/154753826/310423f1-dea2-47df-b30b-d71dd6f5fbfb)
+
 <br>
 ```
   docker commit 0 joomlaguia_completa_imagen
